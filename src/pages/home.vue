@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div class="header-wrapper">
-      <m-header></m-header>
-    </div>
+
     <div class="slide-wrapper">
       <div class="slide-content">
         <mj-slider ref="slide" :autoPlay="isAutoPlay" :loop="isLoop" :showDot="isShowDot"
@@ -21,7 +19,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import m_header from '../components/header'
   import mj_slider from '../components/mj-slider'
 
   const items = [
@@ -58,7 +55,6 @@
 
   export default {
     components: {
-      "m-header": m_header,
       "mj-slider": mj_slider
     },
     computed: {
@@ -85,9 +81,6 @@
 </script>
 
 <style scoped lang="stylus" type="text/stylus">
-  .header-wrapper
-    position: fixed
-    z-index 1
 
   .slide-wrapper
     position: relative

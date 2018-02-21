@@ -11,7 +11,7 @@ import Icon from 'vue-awesome/components/Icon'
 Vue.config.productionTip = false
 
 Vue.use(MuseUI)
-Vue.use('icon',Icon)
+Vue.component('icon',Icon)
 
 /* eslint-disable no-new */
 new Vue({
