@@ -9,6 +9,8 @@
 
   const gankBaseUrl = 'http://localhost:3000'
 
+  // 阿里云公网 http://47.96.31.106:32770/gank/data/Android/10/1
+
   export default {
     data() {
       return {
