@@ -12,7 +12,7 @@
   let env = process.env.NODE_ENV
   console.log('环境-->' + env)
 
-  if (process.env.production === 'production') {
+  if (process.env.NODE_ENV === 'production') {
     console.log('生产环境')
     gankBaseUrl = 'http://47.96.31.106:32770'
   }
