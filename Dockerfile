@@ -1,4 +1,4 @@
-FROM daocloud.io/nginx
+FROM daocloud.io/nginx:1.11-alpine
 
 MAINTAINER J1aDong "991383877@qq.com"
 
