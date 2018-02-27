@@ -7,11 +7,19 @@
                    :interval="interval"
                    :threshold="threshold" :speed="speed">
           <div v-for="item in data">
-            <a :href="item.linkUrl">
-              <img :src="item.picUrl" class="blur">
+            <a :href="item.linkUrl" target="_blank">
+              <img :src="item.picUrl">
             </a>
           </div>
         </mj-slider>
+      </div>
+    </div>
+
+    <div class="content-wrapper" ref="contentParent">
+      <div v-for="item in homeContent.data" class="content-item">
+        <a :href="item.url" target="_blank">
+          <h1> {{item.title}}</h1>
+        </a>
       </div>
     </div>
 
@@ -20,37 +28,21 @@
 
 <script type="text/ecmascript-6">
   import mj_slider from '../components/mj-slider'
+  import homeContent from '../assets/homeContent'
 
   const items = [
-    [
-      {
-        linkUrl: 'http://y.qq.com/w/album.html?albummid=0044K2vN1sT5mE',
-        picUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000001YCZlY3aBifi.jpg',
-        id: 11351
-      },
-      {
-        linkUrl: 'https://y.qq.com/m/digitalbum/gold/index.html?_video=true&id=2197820&g_f=shoujijiaodian',
-        picUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000004ckGfg3zaho0.jpg',
-        id: 11372
-      }
-    ],
-    [
-      {
-        linkUrl: 'http://y.qq.com/w/album.html?albummid=001tftZs2RX1Qz',
-        picUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M00000236sfA406cmk.jpg',
-        id: 11378
-      },
-      {
-        linkUrl: 'https://y.qq.com/msa/218/0_4085.html',
-        picUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000001s0BXx3Zxcwb.jpg',
-        id: 11375
-      },
-      {
-        linkUrl: 'https://y.qq.com/m/digitalbum/gold/index.html?_video=true&id=2195876&g_f=shoujijiaodian',
-        picUrl: 'http://y.gtimg.cn/music/photo_new/T003R720x288M000002cwng4353HKz.jpg',
-        id: 11287
-      }
-    ]
+    {
+      linkUrl: 'http://www.framercn.com/',
+      picUrl: 'http://chuantu.biz/t6/239/1519740430x-1404795894.png',
+    },
+    {
+      linkUrl: 'http://hencoder.com/',
+      picUrl: 'http://chuantu.biz/t6/239/1519740690x-1404793262.png',
+    },
+    {
+      linkUrl: 'https://juejin.im/',
+      picUrl: 'http://i2.bvimg.com/634095/0f5dc62b7a39b44a.png',
+    }
   ]
 
   export default {
@@ -59,14 +51,33 @@
     },
     computed: {
       data() {
-        return items[this.index]
+        return items
+      },
+      homeContent() {
+        return homeContent
+      }
+    },
+    mounted(){
+      let that = this
+
+      this.$refs.contentParent.childNodes.forEach(function(item,index){
+        console.log('childNodes-->'+item)
+        item.style.backgroundColor = that.randomColor()
+      })
+    },
+    methods: {
+      randomColor() {
+        let r = Math.floor(Math.random() * 255);
+        let g = Math.floor(Math.random() * 255);
+        let b = Math.floor(Math.random() * 255);
+        let color = 'rgba(' + r + ',' + g + ',' + b + ',0.4)';
+        return color
       }
     },
     data() {
       return {
         isOpen: false,
 
-        index: 1,
         turnToPrev: false,
         turnToNext: false,
         isAutoPlay: true,
@@ -95,7 +106,25 @@
       width: 100%
       height: 100%
 
-  .blur
-    filter blur(20px)
+  .content-wrapper
+    margin 0 auto
+    width 80%
+
+  .content-item
+    float left
+    width 48%
+    height 10rem
+    border-radius 1rem
+    background-color #7e57c2
+    text-align center
+    font-size 0.8rem
+    margin 2% 1%
+    padding 20px
+    transition 1s ease-in-out
+
+  .content-item:hover
+    box-shadow 1px 1px 40px rgba(0, 0, 0, 0.86)
+    transform scale(1.05)
+
 </style>
 

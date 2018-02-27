@@ -53,8 +53,8 @@
 
 <style scoped lang="stylus" type="text/stylus">
   .header
+    display inline
     height 100px
-    width 100%
 
   .hamburger-menu
     margin-left 5rem
